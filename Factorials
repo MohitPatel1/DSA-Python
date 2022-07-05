@@ -1,0 +1,5 @@
+def solve(n):
+    if n==0:
+        return 1
+    a= solve(n-1)*n
+    return a
