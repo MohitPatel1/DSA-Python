@@ -1,0 +1,9 @@
+def solve(n, arr):
+    a = set(arr)
+    for x in range(n):
+        num = arr[x]
+        if num in a:
+            a.remove(num)
+        else:
+            return 1
+    return 0
