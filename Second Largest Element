@@ -1,0 +1,14 @@
+def solve(n, arr):
+    first = arr[0]
+    second = arr[1]
+    if first<second:
+        first,second=second,first
+    for x in range(2,n):
+        if arr[x] > second:
+            if arr[x] > first:
+                second = first
+                first = arr[x]
+            else:
+                if arr[x] != first:
+                    second = arr[x]
+    return second
