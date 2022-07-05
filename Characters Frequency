@@ -1,0 +1,11 @@
+def solve(str1):
+    m = dict()
+    for x in (str1):
+        a=0
+        if x not in m:
+            l={x:1}
+            m.update(l)
+        else:
+            a = m.get(x) + 1
+            m.update({x:a})
+    return m.values()
