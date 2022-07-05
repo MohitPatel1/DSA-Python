@@ -1,0 +1,12 @@
+def solve(n):
+    str1=""
+    str2=""
+    ans=[]
+    a=""
+    for x in range(1,n+1):
+        str1=a[:x-1]
+        str2=str1[::-1]
+        l=[str1,str2]
+        a = str(x).join(l)
+        ans.append(a)
+    return ans
