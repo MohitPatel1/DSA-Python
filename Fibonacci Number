@@ -1,0 +1,7 @@
+def solve(n):
+    if n==1 or n==2:
+        return 1
+    f1=solve(n-1)
+    f2=solve(n-2)
+    a = f1 + f2
+    return a
