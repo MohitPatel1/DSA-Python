@@ -1,0 +1,7 @@
+def solve(n, arr, x, y):
+    ans=0
+    count=0
+    for a in arr[x:y+1]:
+        ans += a
+        count += 1
+    return ans/count 
