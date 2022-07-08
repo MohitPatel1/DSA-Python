@@ -1,0 +1,8 @@
+def solve(n, nums):
+    for inx in range(n-1,0,-1):
+        if nums[inx]>nums[inx-1]:
+            nums=nums[:inx]+sorted(nums[inx:])
+            for m in range(inx,n):
+                if nums[inx-1]<nums[m]:
+                    nums[inx-1],nums[m]=nums[m],nums[inx-1]
+                    return nums
