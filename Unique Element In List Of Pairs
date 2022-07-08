@@ -1,0 +1,5 @@
+def solve(n, nums):
+    a=0
+    for i in range(n):
+        a=a^nums[i]
+    return a
