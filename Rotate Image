@@ -1,0 +1,12 @@
+def solve(mat):
+    rev_mat = []
+    n=len(mat)
+                                            #reversing elements of rows    
+    for el in mat:
+        rev_mat.append(el[::-1])
+                                            #taking transpose of reversed matrix
+    for i in range(n):
+        for j in range(n):
+            if i+j<=n-1:
+                rev_mat[i][j],rev_mat[n-1-j][n-1-i] = rev_mat[n-1-j][n-1-i],rev_mat[i][j]
+    return rev_mat
