@@ -1,0 +1,6 @@
+def solve(n, nums ,target):
+    s={}
+    for i,el in enumerate(nums):
+        if (target-el) in s:
+            return [s[target-el],i]
+        s[el]=i 
