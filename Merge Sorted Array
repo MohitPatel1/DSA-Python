@@ -1,0 +1,21 @@
+def insert_position(start, end, nums, target):
+    while start<=end:
+        mid=(start+end)//2
+        if nums[mid]==target :
+            return mid
+        elif nums[mid]>target :
+            end=mid-1
+        else :
+            start=mid+1
+    return start
+def solve(m, n, arr1, arr2):
+    end=m
+    start=0
+    for i in range(start,n):
+        insert_inx = insert_position(start, end-1, arr1, arr2[i])
+        for x in range(end-1,insert_inx-1,-1):
+            arr1[x+1]=arr1[x]
+        arr1[insert_inx]=arr2[i]
+        start=insert_inx
+        end=end+1
+    return arr1
