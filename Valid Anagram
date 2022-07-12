@@ -1,0 +1,20 @@
+def solve(s1, s2):
+    s={}
+    if len(s1) != len(s2):
+        return 0
+#converting s1 into dictionary
+    for el in s1:
+        if el not in s:
+            s[el]=0
+        else:
+            s[el]+=1
+#checking and removing elements common in s2 and dictionary
+    for el in s2:
+        if el in s:
+            if s[el]>0:
+                s[el]-=1
+            else:
+                s.pop(el)
+        else:
+            return 0
+    return 1
