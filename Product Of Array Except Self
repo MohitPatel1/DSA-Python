@@ -1,0 +1,11 @@
+def solve(n, arr):
+    ans = [1]*n
+    forword_go = 1
+    for inx in range(n):
+        ans[inx] = forword_go
+        forword_go *= arr[inx]
+    reverse_go = 1 
+    for inx in range(n-1,-1,-1):
+        ans[inx] *= reverse_go
+        reverse_go *= arr[inx]
+    return ans
