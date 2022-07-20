@@ -1,0 +1,15 @@
+def solve(n, arr):
+    start=0
+    end=n-1
+    d=end-start
+    max_water= 0
+    while start<end:
+        c_water= d * min(arr[start],arr[end])
+        if c_water > max_water:
+            max_water = c_water
+        if arr[start]< arr[end]:
+                start+=1
+        else:
+            end-=1 
+        d-=1
+    return max_water
