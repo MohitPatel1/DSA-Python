@@ -1,0 +1,10 @@
+def solve(n, arr):
+    max_sum=-99999
+    current_high=0
+    for i in range(n):
+        current_high += arr[i]
+        if current_high > max_sum:
+            max_sum = current_high
+        if current_high < 0:
+            current_high = 0
+    return max_sum
