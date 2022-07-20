@@ -1,0 +1,23 @@
+def solve(n, arr):
+    ans=[]
+    if len(arr)<0:
+        return ans
+    arr=sorted(arr)
+    for i in range(n):
+        if arr[i]>0:
+            break
+        l=i+1
+        r=n-1
+        while l<r:
+            if arr[i]== -(arr[l]+arr[r]):
+                ans.append((arr[i],arr[l],arr[r]))
+                l+=1
+                r-=1
+            if arr[i] < -(arr[l]+arr[r]):
+                l+=1 
+                continue
+            if arr[i]> -(arr[l]+arr[r]):
+                r-=1
+    a=set(ans)
+    answer=list(a)
+    return sorted(answer)
