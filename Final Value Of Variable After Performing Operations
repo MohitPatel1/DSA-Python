@@ -1,0 +1,12 @@
+def solve(n, arr):
+    count=0
+    for el in arr:
+#we will find + or - within 2 iteration so..
+        for a in range(2):
+            if el[a] == '+':
+                count+=1
+                break
+            if el[a] == '-':
+                count-=1
+                break
+    return count
