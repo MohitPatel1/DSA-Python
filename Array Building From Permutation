@@ -1,0 +1,5 @@
+def solve(n, arr):
+    ans=[]
+    for i in range(n):
+        ans.append(arr[arr[i]])
+    return ans
