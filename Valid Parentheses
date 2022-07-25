@@ -1,0 +1,17 @@
+def solve(str):
+    dic = {'(':')' , '[':']' , '{':'}'}
+    stack=[]
+    for el in str:
+        if el in dic:
+            stack.append(el)
+        else:
+            if len(stack) == 0:
+                return 0
+            if dic[stack[-1]] == el:
+                stack.pop()
+            else:
+                return 0
+    if len(stack) == 0:
+        return 1
+    else:
+        return 0
