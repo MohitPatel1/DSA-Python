@@ -1,0 +1,9 @@
+def solve(s):
+    stack=[]
+    for el in s:
+        if not stack or el != stack[-1]:
+            stack.append(el)
+        else:
+            stack.pop()
+    ans= "".join(stack)
+    return ans
