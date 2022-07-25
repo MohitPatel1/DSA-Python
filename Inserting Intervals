@@ -1,0 +1,49 @@
+def solve(intervals, n, arr):
+    n= len(intervals)
+#binary search 
+    start=0
+    end=n-1
+    flag= False
+    while start <= end:
+        mid=(start+end)//2
+        if intervals[mid][0] == arr[0]:
+#when starting of interval = starting of arr
+            flag = True
+            if arr[1] > intervals[mid][1]:
+                intervals[mid] = arr
+            break
+        if intervals[mid][0] < arr[0]:
+            start = mid+1
+        else:
+            end = mid-1
+#when staring of interval < starting of arr
+    if flag == False:
+        mid = start-1
+        if intervals[mid][1] >= arr[0] and intervals[mid][0] < arr[1] :
+            if intervals[mid][1] <= arr[1]:
+                intervals[mid]=[intervals[mid][0],arr[1]] 
+#when arr is not mergable, append arr to its position
+        else:
+            intervals.append([])
+            for inx in range(n,mid,-1):
+                intervals[inx] = intervals[inx-1]
+            mid+=1
+            intervals[mid]=arr
+           
+#arr and intervals[mid] are merged;
+#merging next elements if necessary 
+    count=0
+    length=len(intervals)
+    for inx in range(mid,length-1):
+        if intervals[mid][1] >= intervals[inx+1][0]:
+            count+=1
+            if intervals[mid][1] < intervals[inx+1][1]:
+                intervals[mid]=[intervals[mid][0],intervals[inx+1][1]]
+        else:
+            break
+#insert arr on mid
+    if count>0:
+        for inx in range(mid+count+1,length):
+            intervals[inx-count] = intervals[inx]     
+    intervals= intervals[:(length-count)]
+    return intervals
