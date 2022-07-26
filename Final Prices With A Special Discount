@@ -1,0 +1,13 @@
+def solve(n, arr):
+    st=[0]
+    ans= deque()
+    for x in range(n-1,-1,-1):
+        if arr[x] > st[-1]:
+            ans.appendleft(arr[x]-st[-1])
+            st.append(arr[x])
+            continue
+        while arr[x] < st[-1]:
+            st.pop()
+        ans.appendleft(arr[x]-st[-1])
+        st.append(arr[x])
+    return ans
