@@ -1,0 +1,25 @@
+from collections import deque
+def solve(n, nums):
+    ans=deque()
+    st=[]
+    uniHigh=0
+#Traverse from last to first element, if higher number already present on stack --> append left
+    for i in range(n-1,-1,-1):
+        while st and st[-1]<=nums[i]:
+            st.pop()
+        if st:
+            ans.appendleft(st[-1])
+            st.append(nums[i])
+        else:
+#If stack is empty and higher number is not yet known traverse interval that is not been traversed befor (previously appended -to- current number)
+            for inx in range(uniHigh,i):
+                if nums[inx]>nums[i]:
+                    ans.appendleft(nums[inx])
+                    st.append(nums[inx])
+                    st.append(nums[i])
+                    uniHigh=inx+1
+                    break
+            if not st:
+                ans.appendleft(-1)
+                st.append(nums[i])
+    return ans
