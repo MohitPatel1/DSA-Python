@@ -1,0 +1,30 @@
+def solve(image , sr, sc, color):
+    tColumn=len(image[0])-1
+    tRaw=len(image)-1
+    st=[[sr,sc]]
+    changeColor = image[sr][sc]
+    if changeColor == color:
+        return image
+#we change the detected color first then append it to stack and look for other 
+    image[sr][sc] = color
+    while st:
+        sr = st[-1][0]
+        sc = st[-1][1]
+        st.pop()
+#search up
+        if sr>0 and image[sr-1][sc] == changeColor   :
+            image[sr-1][sc] = color
+            st.append([sr-1,sc])
+#search right
+        if sc<tColumn and image[sr][sc+1] == changeColor:
+            image[sr][sc+1] = color
+            st.append([sr,sc+1])
+#search down           
+        if sr<tRaw and image[sr+1][sc] == changeColor :
+            image[sr+1][sc] = color
+            st.append([sr+1,sc])
+#search left
+        if sc>0 and image[sr][sc-1] == changeColor :    
+            image[sr][sc-1] = color
+            st.append([sr,sc-1])
+    return image
