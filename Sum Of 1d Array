@@ -1,0 +1,7 @@
+def solve(n, nums):
+    ans=[]
+    Sum=0
+    for el in nums:
+        Sum += el
+        ans.append(Sum)
+    return ans
