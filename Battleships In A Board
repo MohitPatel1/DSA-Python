@@ -1,0 +1,12 @@
+def solve(board):
+    m = len(board)
+    n = len(board[0])
+    count = 0
+    for i in range(m):
+        for j in range(n):
+            if board[i][j] == 'X':
+                if (i==0 or board[i-1][j] != 'X') and (j==0 or board[i][j-1] != 'X'):
+                    count +=1
+    return count
+
+#we go left to right , up to down and if we get a 'X' we check if it is not a part of previously detected ship. If not we count it as new ship
