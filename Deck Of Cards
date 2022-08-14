@@ -1,0 +1,24 @@
+def Gcd(big, small):
+    if small==0:
+        return big
+    return Gcd(small,big % small)
+def solve(n, deck):
+    m={}
+    for el in deck:
+        if el in m:
+            m[el] += 1 
+        else:
+            m[el] = 1
+#if any element comes only one time GCD is 1
+    if 1 in m.values():
+        return 0
+#we convert array of element into set to remove duplicates
+    s = set(m.values())
+#Take GCD of elemnets in set
+    gcd = s.pop()
+    for el in s:
+        if gcd > el:
+            gcd = Gcd(gcd,el)
+        else:
+            gcd = Gcd(el,gcd)
+    return 1 if gcd>1 else 0
