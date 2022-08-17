@@ -1,0 +1,18 @@
+def solve(s):
+    m={}
+    present = set()
+    st = []
+
+    for i,el in enumerate(s):
+        m[el]=i
+    
+    for i,el in enumerate(s):
+        if el in present:
+            continue
+        while st and st[-1]>el and m[st[-1]] > i:
+            present.remove(st[-1])
+            st.pop()
+        st.append(el)
+        present.add(el)
+    ans = "".join(st)
+    return ans
