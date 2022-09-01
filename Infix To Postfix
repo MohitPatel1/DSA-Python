@@ -1,0 +1,28 @@
+def solve(infix):
+    m = {  '+':1 , '-':1, 
+            '*':2 , '/':2,
+            '^':3 ,
+            '(':4, ')':4}
+    st = [] 
+    postfix = []
+    for el in infix:
+        if el in m:
+            if el == '(':
+                st.append('(')
+                continue #if starting bracket.. continue    
+            if el == ')':
+                while st[-1] != '(':
+                    add = st.pop()
+                    postfix.append(add)
+                st.pop() #to remove '(' after having ')'
+                continue
+            while st and m[st[-1]] >= m[el] and st[-1] != '(':
+                add = st.pop()
+                postfix.append(add) #only for lower operants inside bracket
+            st.append(el)
+        else:
+            postfix.append(el)
+    #join remaining parts in postfix
+    postfix += reversed(st)
+    return "".join(postfix)
+            
