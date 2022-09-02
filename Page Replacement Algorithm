@@ -1,0 +1,14 @@
+def solve(n, pages, capacity):
+    qu = deque()
+    count = 0
+    for el in pages:
+        if el in qu:
+            continue
+        elif len(qu) >= capacity:
+            qu.popleft()
+            qu.append(el)
+            count+=1
+        else:
+            qu.append(el)
+            count+=1
+    return count
