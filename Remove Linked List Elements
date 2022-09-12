@@ -1,0 +1,12 @@
+def solve(head, key):
+#if starting data is key
+    while head.data == key:
+        head = head.next
+    ptr = head
+#if next object data is the key, remove it
+    while ptr.next:
+        if ptr.next.data == key:
+            ptr.next = ptr.next.next
+            continue #to remove side by side keys 
+        ptr = ptr.next
+    return head
