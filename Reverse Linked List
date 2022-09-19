@@ -1,0 +1,11 @@
+def solve(head):
+    prev = None 
+    cur = head 
+    nex = head.next
+    while(nex):
+        cur.next=prev
+        prev=cur
+        cur=nex
+        nex=nex.next
+    cur.next=prev
+    return cur
